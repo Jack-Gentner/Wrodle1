@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-    <?php session_start() 
-    ?>
 <html> 
     <head>
         <title> Sign up </title>
@@ -86,6 +84,8 @@
             $stmt->bind_param("sss", $uname, $hash, $currentDate);
             $stmt->execute();
             $stmt->close();
+
+            session_start();
 
             $_SESSION["uname"] = $uname;
             $_SESSION["hash"] = $hash;
