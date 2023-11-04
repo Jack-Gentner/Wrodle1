@@ -3,7 +3,9 @@
     <head>
         <title> Sign up </title>
 
-            <link rel="stylesheet" href="Design.css?v=<?php echo time(); ?>">
+        <style>
+            <?php include "Design.css" ?>
+        </style>
 
         <script> 
             window.addEventListener("load", function(){
@@ -23,28 +25,22 @@
             });
             
         </script>
-        
-        <style>  
-            body{
-                background-image: url(https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/emojicollage-tess-png-1532368373.png);
-            }
 
-        </style>
 
-    </head>
+        </head>
 
     <body>
-        <div id="centeringdiv">
-            <div id="LoginDiv">
+    
+            <div id="LoginDiv" class="centerText">
+            <h1 style="padding: 5%;"> Sign Up </h1> <br> 
                 <form name="signup" method="post" enctype="multipart/form-data"> 
-                <h1> Dish-covery </h1> <br> 
-                Username: <input id="uname" name="uname" type="text"><p></p> <br>
+                Username: <input id="uname" name="uname" type="text"><p></p>
                 Password: <input id="pass1" name="pass1" type="password"> <p></p> 
                 Re-enter Password: <input id="pass2" name="pass2" type="password"> <p></p>
                 <button type="submit"> Sign up </a></button>
                 <button type="button"> <a href="login.php"> Go to Login </a> </button>
                 </form>
-            </div>
+        
         </div>
         <?php
 
@@ -90,7 +86,7 @@
             $_SESSION["uname"] = $uname;
             $_SESSION["hash"] = $hash;
 
-            header('Location: /Wrodle/wr-main.html');
+            header('Location: /Wrodle/Wrodle/wr-main.html');
         }
         else if ($_SERVER["REQUEST_METHOD"] === "POST") {
             ?>

@@ -11,25 +11,19 @@ ob_start();
         
         <style> 
             <?php include "Design.css" ?>
-            <?php include "mainproj.css" ?>
 
         </style>
 
     </head>
 
     <body>
-        <div id="bar"> 
-            Wrodle
-            </div><br><br>
 
-            <div id="LoginDiv">
+            <div id="LoginDiv" class="centerText">
                 <h1 style="padding: 5%;"> Login </h1>
-                <form name="login" method="post" enctype="multipart/form-data"> 
-                
-
+                <form name="login" method="post" enctype="multipart/form-data" class="centerText"> 
                 <table id="table2"> 
                     <tr> 
-                        <td> Username:</td>
+                        <td class="centerText"> Username:</td>
                         <td> <input name="Uname" id="Uname" type="text"></td>
                     </tr>
                     <tr> 
@@ -40,7 +34,7 @@ ob_start();
 
                 <br> 
 
-                <button type="submit" class="otherButtons">Login </button> <br> <br>
+                <button type="submit" class="otherButtons">Login </button>
                 <button type="button"> <a href="signup.php"> Go to Sign Up </a> </button>
                 </form>
             </div>
@@ -83,7 +77,7 @@ ob_start();
                     session_start();
                     $_SESSION["Uname"] = $uname;
                     $_SESSION["hash"] = $hash;
-                    header("Location: /Wrodle/wr-main.html");
+                    header("Location: /Wrodle/Wrodle/wr-main.html");
                 } else {
                     echo "Authentication failed";
                 }
