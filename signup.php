@@ -5,7 +5,7 @@
     <head>
         <title> Sign up </title>
 
-            <link rel="stylesheet" href="Styles.css?v=<?php echo time(); ?>">
+            <link rel="stylesheet" href="Design.css?v=<?php echo time(); ?>">
 
         <script> 
             window.addEventListener("load", function(){

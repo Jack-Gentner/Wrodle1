@@ -10,7 +10,8 @@ ob_start();
         </script>
         
         <style> 
-            <?php include "Style.css" ?>
+            <?php include "Design.css" ?>
+            <?php include "mainproj.css" ?>
 
         </style>
 
