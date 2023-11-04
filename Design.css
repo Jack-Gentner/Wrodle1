@@ -1,0 +1,55 @@
+#screen {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+
+}
+#gHeader {
+    text-align: center;
+    padding-top: 3%;
+}
+#aHeader {
+    text-align: center;
+    padding-top: 3%;
+}
+#accDetails {
+    border: 2px solid black;
+    text-align: center;
+    width: 30%;
+    margin: auto;
+    padding-bottom: 5%;
+}
+#timer {
+   text-align: center; 
+}
+
+#login {
+    float: right;
+}
+#acc {
+    float: right;
+}
+#logout {
+    float: right;
+}
+
+.inputs {
+    text-align: center;
+}
+#guesses {
+    width: 100%;
+}
+input {
+    width: 3em;
+    height: 3em;
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-top: 1em;
+    text-align: center;
+    font-weight: bold;
+}h1, h2, label {
+    color: white;
+}
+input:focus {
+    background-color: green;
+}
