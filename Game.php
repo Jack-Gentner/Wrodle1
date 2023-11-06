@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="stylesheet" href="Design.css">
+        <style>
+            <?php session_start(); ?>
+            <?php include "Design.css" ?>
+        </style>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
         <meta charset="UTF-8">
@@ -98,7 +101,7 @@
                 var wordArray = word.split("");
 
                 //compare values
-                for(let i =0; i < 5; i++){
+                for(let i = 0; i < 5; i++){
                     
                 }
             }

@@ -87,7 +87,8 @@
 
             $result2 = $stmt2->get_result();
             $row2 = $result2->fetch_assoc();
-            $uid = $row2['uid'];            
+            $uid = $row2['uid']; 
+            $stmt2->close();           
 
             session_start();
             $_SESSION["uid"] = $uid;

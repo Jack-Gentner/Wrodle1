@@ -46,11 +46,18 @@
     margin-top: 1em;
     text-align: center;
     font-weight: bold;
-}h1, h2, label {
+
+}
+input {
+    color: transparent;
+    text-shadow: 0 0 0 black;
+}    
+h1, h2, label {
     color: white;
 }
 input:focus {
     background-color: green;
+
 }
 .centerText{
     text-align: center;
