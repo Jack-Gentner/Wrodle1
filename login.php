@@ -62,7 +62,7 @@ ob_start();
 
             $uname = $_REQUEST["Uname"];
 
-            $stmt = $conn->prepare("SELECT passwordHash FROM account WHERE username = ?");
+            $stmt = $conn->prepare("SELECT uid, passwordHash, creationDate FROM account WHERE username = ?");
             $stmt->bind_param("s", $uname);
             $stmt->execute();
 
@@ -71,12 +71,17 @@ ob_start();
 
             if ($row) {
                 $hash = $row['passwordHash'];
+                $uid = $row['uid'];
+                $date = $row['creationDate'];
 
                 if (password_verify($_REQUEST["password1"], $hash)) {
                     
                     session_start();
-                    $_SESSION["Uname"] = $uname;
+                    $_SESSION["uid"] = $uid;
+                    $_SESSION["uname"] = $uname;
                     $_SESSION["hash"] = $hash;
+                    $_SESSION["doc"] = $date;
+
                     header("Location: /Wrodle/Wrodle/wr-main.html");
                 } else {
                     echo "Authentication failed";

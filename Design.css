@@ -15,9 +15,8 @@
 #accDetails {
     border: 2px solid black;
     text-align: center;
-    width: 30%;
+    width: 40%;
     margin: auto;
-    padding-bottom: 5%;
 }
 #timer {
    text-align: center; 
@@ -182,4 +181,7 @@ body {
     position: absolute;
     right: 50%;
     transform: translate(50%, 0);
+}
+#logoutB {
+    float: right;
 }

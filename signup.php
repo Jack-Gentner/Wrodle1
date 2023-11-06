@@ -81,10 +81,19 @@
             $stmt->execute();
             $stmt->close();
 
-            session_start();
+            $stmt2 = $conn->prepare("SELECT uid FROM account WHERE username = ?");
+            $stmt2->bind_param("s", $uname);
+            $stmt2->execute();
 
+            $result2 = $stmt2->get_result();
+            $row2 = $result2->fetch_assoc();
+            $uid = $row2['uid'];            
+
+            session_start();
+            $_SESSION["uid"] = $uid;
             $_SESSION["uname"] = $uname;
             $_SESSION["hash"] = $hash;
+            $_SESSION["doc"] = $currentDate;
 
             header('Location: /Wrodle/Wrodle/wr-main.html');
         }

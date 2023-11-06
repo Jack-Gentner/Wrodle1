@@ -1,4 +1,39 @@
 <!DOCTYPE html>
+<?php
+    session_start();
+
+    $conn = new mysqli("localhost", "wrodleAdmin", "ZipBombLover696969", "wrodle");
+    if ($conn->connect_error) {
+        echo "Connection error";
+    }
+    else{
+        #find user data
+        $stmt = $conn->prepare("SELECT * FROM stats WHERE uid = ?");
+        $stmt->bind_param("s", $_SESSION['uid']);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+
+        $gamesPlayed = $row["gamesPlayed"];
+        $gamesWon = $row["gamesWon"];
+        $fewestGuesses = $row["fewestGuesses"];
+        $winStreak = $row["winStreak"];
+        $quickestTime = $row["quickestTime"];
+        $hardestDifficulty = $row["hardestDifficulty"];
+    }
+
+    if(array_key_exists('logout', $_POST)){
+        logout();
+    }
+
+    function logout(){ 
+        session_destroy();
+
+        header('Location: /Wrodle/Wrodle/login.php');   
+    }
+?>
+
 <html lang="en">
     <head>
         <link rel="stylesheet" href="Design.css">
@@ -6,10 +41,9 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
         
         <meta charset="UTF-8">
-        <title> Game </title>
+        <title> Account </title>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
 
     </head>
     <body>
@@ -18,50 +52,55 @@
             <a href="wr-main.html"><i class="fas fa-home"></i></a>
             <a href="#"><i class="fas fa-envelope"></i></a>
             <a href="#"><i class="fas fa-globe"></i></a>
-            <a href="Account.html"><i class="fas fa-cog"></i></a>
+            <a href="Account.php"><i class="fas fa-cog"></i></a>
             <!-- Welcome Header -->
             <h1 class="header">Welcome!</h1>
         </div>
-        
+
+        <form method="post">
+            <input id="logoutB" type="submit" name="logout" value="logout">
+        </form>
+
         <div id="screen">
             <h1 id="aHeader"> Account </h1>
 
             <br>
 
             <div id="accDetails">
+                <br>
+                <br>
                 <h2 style="text-decoration: underline;">
                     Stats
                 </h2>
 
                 <label for="gamesPlayed"> Games Played:</label>
-                <input id="gamesPlayed"> </input>
+                <p id="gamesPlayed"> <?php echo $gamesPlayed ?> </p>
                 <br>
                 <br>
 
                 <label for="gamesWon"> Games Won:</label>
-                <input id="gamesWon"> </input>
+                <p id="gamesWon"> <?php echo $gamesWon ?> </p>
                 <br>
                 <br>
 
                 <label for="shortestGuess"> Shortest Guess:</label>
-                <input id="shortestGuess"> </input>
+                <p id="shortestGuess"> <?php echo $fewestGuesses ?> </p>
                 <br>
                 <br>
 
                 <label for="winStreak"> Win Streak:</label>
-                <input id="winStreak"> </input>
+                <p id="winStreak"> <?php echo $winStreak ?> </p>
                 <br>
                 <br>
 
                 <label for="hardestDifficulty"> Hardest Difficulty Won:</label>
-                <input id="hardestDifficulty"> </input>
+                <p id="hardestDifficulty"> <?php echo $hardestDifficulty ?> </p>
                 <br>
                 <br>
                 <br>
 
                 <label for="dateCreated"> Date of Account Creation:</label>
-                <input id="dateCreated"> </input>
-                <br>
+                <p id="dateCreated"> <?php echo $_SESSION["doc"] ?> </p>
 
             </div>
 

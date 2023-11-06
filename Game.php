@@ -28,11 +28,18 @@
                 $minNum = $row['minID'];
 
                 #get random number between these two values (inclusive)
+                $wordNum = rand($minNum, $maxNum);
 
-                
+                #retrieve word from the database
+                $stmt2 = $conn->prepare("SELECT word FROM wordlist WHERE wid = ?");
+                $stmt2->bind_param("s", $wordNum);
+                $stmt2->execute();
+
+                $result2 = $stmt2->get_result();
+                $row2 = $result2->fetch_assoc();
+                global $word;
+                $word = $row2['word'];
             }
-
-
         ?>
         <script>
             $(document).ready(function (){
@@ -69,6 +76,32 @@
                     }
                 });
             });
+        </script>
+        <script>
+                        
+            //counter variable
+            var count = 0;
+            //game functionality
+            def checkGuess(){
+                //increase number of guesses by 1
+                count++;
+                //get value of guess word by letter
+                var guessArray;
+                guessArray[0] = document.getElementById('inp1');
+                guessArray[1] = document.getElementById('inp2');
+                guessArray[2] = document.getElementById('inp3');
+                guessArray[3] = document.getElementById('inp4');
+                guessArray[4]  = document.getElementById('inp5');
+
+                //get values of correct word by letter
+                var word = "<?php echo $word ?>";
+                var wordArray = word.split("");
+
+                //compare values
+                for(let i =0; i < 5; i++){
+                    
+                }
+            }
 
         </script>
 
@@ -79,7 +112,7 @@
             <a href="wr-main.html"><i class="fas fa-home"></i></a>
             <a href="#"><i class="fas fa-envelope"></i></a>
             <a href="#"><i class="fas fa-globe"></i></a>
-            <a href="Account.html"><i class="fas fa-cog"></i></a>
+            <a href="Account.php"><i class="fas fa-cog"></i></a>
             <!-- Welcome Header -->
             <h1 class="header">Welcome!</h1>
         </div>
