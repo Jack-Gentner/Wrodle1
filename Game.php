@@ -18,6 +18,7 @@
 
             if($conn->connect_error){
                 echo "Cannot connect to database";
+                // balls
             }
             else{
                 #Get max and min word IDs, so we can generate a random number between the two
