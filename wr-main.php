@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+    <?php session_start();?>
     <head>
-        <link rel="stylesheet" href="Design.css">
-        <link rel="stylesheet" href="mainproj.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
         
         <meta charset="UTF-8">
@@ -12,14 +11,17 @@
 
         <script>
             function gameSetup(){
-                window.location.href ="wr-setup.html";
+                window.location.href ="wr-setup.php";
             }
         </script>
 
     </head>
     <body>
+        <style>
+            <?php include "Design.css" ?>
+        </style>
         <div class="navbar">
-            <a href="wr-main.html"><i class="fas fa-home"></i></a>
+            <a href="wr-main.php"><i class="fas fa-home"></i></a>
             <a href="#"><i class="fas fa-envelope"></i></a>
             <a href="#"><i class="fas fa-globe"></i></a>
             <a href="Account.php"><i class="fas fa-cog"></i></a>

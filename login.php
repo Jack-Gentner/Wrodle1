@@ -82,7 +82,7 @@ ob_start();
                     $_SESSION["hash"] = $hash;
                     $_SESSION["doc"] = $date;
 
-                    header("Location: /Wrodle/Wrodle/wr-main.html");
+                    header("Location: /Wrodle/Wrodle/wr-main.php");
                 } else {
                     echo "Authentication failed";
                 }

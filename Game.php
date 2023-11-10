@@ -12,15 +12,16 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         
+        
         <?php
 
             $conn = new mysqli("localhost", "wrodleAdmin", "ZipBombLover696969", "wrodle");
 
             if($conn->connect_error){
                 echo "Cannot connect to database";
-                // balls
             }
             else{
+
                 #Get max and min word IDs, so we can generate a random number between the two
                 $stmt = $conn->prepare("SELECT MAX(wid) AS maxID, MIN(wid) AS minID FROM wordlist");
                 $stmt->execute();
@@ -113,7 +114,7 @@
     <body>
 
         <div class="navbar">
-            <a href="wr-main.html"><i class="fas fa-home"></i></a>
+            <a href="wr-main.php"><i class="fas fa-home"></i></a>
             <a href="#"><i class="fas fa-envelope"></i></a>
             <a href="#"><i class="fas fa-globe"></i></a>
             <a href="Account.php"><i class="fas fa-cog"></i></a>
@@ -123,8 +124,63 @@
         
         <div id="screen">
             <h1 id="gHeader"> Game </h1>
-            <h2 id="timer"> 0:00 </h2>
-
+            <h2 id="timer1" style="text-align:center;"> </h2>
+                <?php
+                    #start timer
+                        if($_SESSION['difficulty'] == "easy" ){
+                            $goodWord = $GLOBALS['word'];
+                            echo 
+                                "<script>
+                                    let count = 180;
+                                    const timer = setInterval(function() {
+                                        document.getElementById('timer1').innerHTML = count + ' Seconds Left';
+                                        if (count === 0) {
+                                            document.getElementById('timer1').innerHTML = 0;
+                                            clearInterval(timer);
+                                            alert('Times up! The word was $goodWord.');
+                                            window.location.href = 'Account.php';
+                                        }
+                                        count--;
+                                    }, 1000);
+                                </script>";
+                        }
+                        else if($_SESSION['difficulty'] == "medium" ){
+                            $goodWord = $GLOBALS['word'];
+                            echo 
+                                "<script>
+                                    let count = 90;
+                                    const timer = setInterval(function() {
+                                        document.getElementById('timer1').innerHTML = count + ' Seconds Left';
+                                        if (count === 0) {
+                                            document.getElementById('timer1').innerHTML = 0;
+                                            clearInterval(timer);
+                                            alert('Times up! The word was $goodWord.');
+                                            window.location.href = 'Account.php';
+                                        }
+                                        count--;
+                                    }, 1000);
+                                </script>";
+                        }
+                        else if($_SESSION['difficulty'] == "hard" ){
+                            $goodWord = $GLOBALS['word'];
+                            echo 
+                                "<script>
+                                    let count = 45;
+                                    const timer = setInterval(function() {
+                                        document.getElementById('timer1').innerHTML = count + ' Seconds Left';
+                                        if (count === 0) {
+                                            document.getElementById('timer1').innerHTML = 0;
+                                            clearInterval(timer);
+                                            alert('Times up! The word was $goodWord.');
+                                            window.location.href = 'Account.php';
+                                        }
+                                        count--;
+                                    }, 1000);
+                                </script>";
+                        }else{
+                            echo "<script> document.getElementById('timer1').innerHTML = 'No timer, take your time.'</script> ";
+                        }
+                ?>
             <br>
             <br>
             

@@ -51,7 +51,7 @@
     <body>
 
         <div class="navbar">
-            <a href="wr-main.html"><i class="fas fa-home"></i></a>
+            <a href="wr-main.php"><i class="fas fa-home"></i></a>
             <a href="#"><i class="fas fa-envelope"></i></a>
             <a href="#"><i class="fas fa-globe"></i></a>
             <a href="Account.php"><i class="fas fa-cog"></i></a>

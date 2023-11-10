@@ -12,7 +12,7 @@
                 let signupForm = document.forms.signup
                 signupForm.addEventListener("submit", function(event){
 
-                if (singupForm.pass1.value.length < 8) {
+                if (signupForm.pass1.value.length < 8) {
                     event.preventDefault();
                     window.alert("Invalid password")
                 }
@@ -96,7 +96,7 @@
             $_SESSION["hash"] = $hash;
             $_SESSION["doc"] = $currentDate;
 
-            header('Location: /Wrodle/Wrodle/wr-main.html');
+            header('Location: /Wrodle/Wrodle/wr-main.php');
         }
         else if ($_SERVER["REQUEST_METHOD"] === "POST") {
             ?>
