@@ -75,33 +75,33 @@
                     Stats
                 </h2>
 
-                <label for="gamesPlayed"> Games Played:</label>
+                <h3> Games Played:</h3>
                 <p id="gamesPlayed"> <?php echo $gamesPlayed ?> </p>
                 <br>
                 <br>
 
-                <label for="gamesWon"> Games Won:</label>
+                <h3> Games Won:</h3>
                 <p id="gamesWon"> <?php echo $gamesWon ?> </p>
                 <br>
                 <br>
 
-                <label for="shortestGuess"> Shortest Guess:</label>
+                <h3> Shortest Guess:</h3>
                 <p id="shortestGuess"> <?php echo $fewestGuesses ?> </p>
                 <br>
                 <br>
 
-                <label for="winStreak"> Win Streak:</label>
+                <h3> Win Streak:</h3>
                 <p id="winStreak"> <?php echo $winStreak ?> </p>
                 <br>
                 <br>
 
-                <label for="hardestDifficulty"> Hardest Difficulty Won:</label>
+                <h3> Hardest Difficulty Won:</h3>
                 <p id="hardestDifficulty"> <?php echo $hardestDifficulty ?> </p>
                 <br>
                 <br>
                 <br>
 
-                <label for="dateCreated"> Date of Account Creation:</label>
+                <h3> Date of Account Creation:</h3>
                 <p id="dateCreated"> <?php echo $_SESSION["doc"] ?> </p>
 
             </div>

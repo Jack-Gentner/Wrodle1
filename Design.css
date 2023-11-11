@@ -55,10 +55,6 @@ input {
 h1, h2, label {
     color: white;
 }
-input:focus {
-    background-color: green;
-
-}
 .centerText{
     text-align: center;
     align-content: center;

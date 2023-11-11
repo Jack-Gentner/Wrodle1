@@ -3,7 +3,7 @@
     <head>
         <style>
             <?php session_start(); ?>
-            <?php include "Design.css" ?>
+            <?php include "Design.css"; ?>
         </style>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
@@ -49,7 +49,7 @@
         <script>
             $(document).ready(function (){
 
-                $("#inp1").focus();
+                $("#first").focus();
 
                 $("input").keydown(function(event){
                     var keycode = event.keyCode;
@@ -71,7 +71,8 @@
                     //create check to see if key codes are letters
                     if(keycode == 13){
                         //Check Guess
-                        alert($(this).val());
+                        checkGuess();
+
                     }
                     else if (keycode == 8){
                         return;
@@ -82,30 +83,59 @@
                 });
             });
         </script>
+
         <script>
                         
             //counter variable
-            var count = 0;
+            var guessCount = 0;
+            var row = 0;
+            
             //game functionality
-            def checkGuess(){
+            function checkGuess(){
                 //increase number of guesses by 1
-                count++;
+                guessCount++;
                 //get value of guess word by letter
-                var guessArray;
-                guessArray[0] = document.getElementById('inp1');
-                guessArray[1] = document.getElementById('inp2');
-                guessArray[2] = document.getElementById('inp3');
-                guessArray[3] = document.getElementById('inp4');
-                guessArray[4]  = document.getElementById('inp5');
+                var collection = document.getElementById("row"+row).children;
+                var guessArray = new Array(5);
+                guessArray[0] = collection[0].value;
+                guessArray[1] = collection[1].value;
+                guessArray[2] = collection[2].value;
+                guessArray[3] = collection[3].value;
+                guessArray[4]  = collection[4].value;
 
                 //get values of correct word by letter
                 var word = "<?php echo $word ?>";
                 var wordArray = word.split("");
 
-                //compare values
+                //compare values and change background colors
                 for(let i = 0; i < 5; i++){
-                    
+                   if(guessArray[i] == wordArray[i]){
+                    collection[i].style.backgroundColor = "green";
+                   }
+                   else if(wordArray.includes(guessArray[i])){
+                    collection[i].style.backgroundColor = "yellow";
+                   }
+                   else{
+                    collection[i].style.backgroundColor = "gray";
+                   }
                 }
+
+                //focus on next row
+                row++;
+                var nextInput = document.getElementById('row'+row).children;
+                nextInput[0].focus();
+                
+                // win condition
+                if(guessArray[0] == wordArray[0] 
+                && guessArray[1] == wordArray[1] 
+                && guessArray[2] == wordArray[2] 
+                && guessArray[3] == wordArray[3] 
+                && guessArray[4] == wordArray[4]){
+                    alert("Congrats, you won! The word was <?php echo $word?>");
+                    window.location.href = 'Account.php';
+                }
+
+                return;
             }
 
         </script>
@@ -185,12 +215,20 @@
             <br>
             
             <div id="guesses">
+                <div id="row0" class="inputs">
+                    <input id="first" type="text" maxlength="1" minlength="1" class="input">
+                    <input type="text" maxlength="1" minlength="1" class="input">
+                    <input type="text" maxlength="1" minlength="1" class="input">
+                    <input type="text" maxlength="1" minlength="1" class="input">
+                    <input type="text" maxlength="1" minlength="1" class="input">
+                </div>
+
                 <div id="row1" class="inputs">
-                    <input id="inp1" type="text" maxlength="1" minlength="1" class="input">
-                    <input id="inp2" type="text" maxlength="1" minlength="1" class="input">
-                    <input id="inp3" type="text" maxlength="1" minlength="1" class="input">
-                    <input id="inp4" type="text" maxlength="1" minlength="1" class="input">
-                    <input id="inp5" type="text" maxlength="1" minlength="1" class="input">
+                    <input type="text" maxlength="1" minlength="1" class="input">
+                    <input type="text" maxlength="1" minlength="1" class="input">
+                    <input type="text" maxlength="1" minlength="1" class="input">
+                    <input type="text" maxlength="1" minlength="1" class="input">
+                    <input type="text" maxlength="1" minlength="1" class="input">
                 </div>
 
                 <div id="row2" class="inputs">
@@ -210,14 +248,6 @@
                 </div>
 
                 <div id="row4" class="inputs">
-                    <input type="text" maxlength="1" minlength="1" class="input">
-                    <input type="text" maxlength="1" minlength="1" class="input">
-                    <input type="text" maxlength="1" minlength="1" class="input">
-                    <input type="text" maxlength="1" minlength="1" class="input">
-                    <input type="text" maxlength="1" minlength="1" class="input">
-                </div>
-
-                <div id="row5" class="inputs">
                     <input type="text" maxlength="1" minlength="1" class="input">
                     <input type="text" maxlength="1" minlength="1" class="input">
                     <input type="text" maxlength="1" minlength="1" class="input">
