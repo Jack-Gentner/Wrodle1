@@ -52,6 +52,7 @@
                 $("#first").focus();
 
                 $("input").keydown(function(event){
+                    // add a check to make sure it is a letter pressed not a number or anything else
                     var keycode = event.keyCode;
 
                     if(keycode == 8){
@@ -68,7 +69,7 @@
                 $("input").keyup(function(event){
                     var keycode = event.keyCode;
 
-                    //create check to see if key codes are letters
+                    //enter key
                     if(keycode == 13){
                         //Check Guess
                         checkGuess();
@@ -94,6 +95,8 @@
             function checkGuess(){
                 //increase number of guesses by 1
                 guessCount++;
+                // check loss condition then quit game
+
                 //get value of guess word by letter
                 var collection = document.getElementById("row"+row).children;
                 var guessArray = new Array(5);
