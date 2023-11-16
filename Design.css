@@ -52,7 +52,7 @@ input {
     color: transparent;
     text-shadow: 0 0 0 black;
 }    
-input:focus{
+.input:focus{
     box-shadow: 0px 0px 40px 15px #FE7F01;
 }
 h1, h2, label {
