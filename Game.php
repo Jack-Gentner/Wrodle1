@@ -51,10 +51,14 @@
 
                 $("#first").focus();
 
+                $(document).mousedown(function(e){
+                    return false;
+                });
+
                 $("input").keydown(function(event){
                     // add a check to make sure it is a letter pressed not a number or anything else
                     var keycode = event.keyCode;
-
+                    //delete
                     if(keycode == 8){
                         if($(this).val() != ''){
                             return;
@@ -64,22 +68,18 @@
                             $(this).val('');
                         }   
                     }
-                });
-
-                $("input").keyup(function(event){
-                    var keycode = event.keyCode;
-
-                    //enter key
-                    if(keycode == 13){
-                        //Check Guess
+                    //enter
+                    else if(keycode == 13){
                         checkGuess();
-
                     }
-                    else if (keycode == 8){
-                        return;
+                    //Letters
+                    else if(keycode > 64 && keycode < 91){
+                        if($(this).val() != ''){
+                            $(this).next().focus();
+                        }
                     }
                     else{
-                        $(this).next().focus();
+                        event.preventDefault();
                     }
                 });
             });
@@ -95,7 +95,6 @@
             function checkGuess(){
                 //increase number of guesses by 1
                 guessCount++;
-                // check loss condition then quit game
 
                 //get value of guess word by letter
                 var collection = document.getElementById("row"+row).children;
@@ -107,7 +106,7 @@
                 guessArray[4]  = collection[4].value;
 
                 //get values of correct word by letter
-                var word = "<?php echo $word ?>";
+                var word = "<?php echo $word ?>".toUpperCase();
                 var wordArray = word.split("");
 
                 //compare values and change background colors
@@ -123,21 +122,29 @@
                    }
                 }
 
-                //focus on next row
-                row++;
-                var nextInput = document.getElementById('row'+row).children;
-                nextInput[0].focus();
-                
                 // win condition
                 if(guessArray[0] == wordArray[0] 
                 && guessArray[1] == wordArray[1] 
                 && guessArray[2] == wordArray[2] 
                 && guessArray[3] == wordArray[3] 
                 && guessArray[4] == wordArray[4]){
-                    alert("Congrats, you won! The word was <?php echo $word?>");
-                    window.location.href = 'Account.php';
+                    setTimeout(() => {
+                        alert("Congrats, you won!");
+                        window.location.href = './Account.php';
+                    }, 50);
+                }
+                //loss condition 
+                else if(guessCount == 5){        
+                    setTimeout(() => {
+                        alert('You ran out of guesses. The word was <?php echo $word ?>');
+                        window.location.href = './Account.php';
+                    }, 100);
                 }
 
+                //focus on next row
+                row++;
+                var nextInput = document.getElementById('row'+row).children;
+                nextInput[0].focus();
                 return;
             }
 
@@ -147,10 +154,10 @@
     <body>
 
         <div class="navbar">
-            <a href="wr-main.php"><i class="fas fa-home"></i></a>
+            <a href="./wr-main.php"><i class="fas fa-home"></i></a>
             <a href="#"><i class="fas fa-envelope"></i></a>
             <a href="#"><i class="fas fa-globe"></i></a>
-            <a href="Account.php"><i class="fas fa-cog"></i></a>
+            <a href="./Account.php"><i class="fas fa-cog"></i></a>
             <!-- Welcome Header -->
             <h1 class="header">Welcome!</h1>
         </div>
@@ -168,10 +175,12 @@
                                     const timer = setInterval(function() {
                                         document.getElementById('timer1').innerHTML = count + ' Seconds Left';
                                         if (count === 0) {
-                                            document.getElementById('timer1').innerHTML = 0;
+                                            document.getElementById('timer1').innerHTML = 'Times up!';
                                             clearInterval(timer);
-                                            alert('Times up! The word was $goodWord.');
-                                            window.location.href = 'Account.php';
+                                            setTimeout(() => {
+                                                alert('Times up! The word was $goodWord.');
+                                                window.location.href = './Account.php';
+                                            }, 100);
                                         }
                                         count--;
                                     }, 1000);
@@ -185,10 +194,12 @@
                                     const timer = setInterval(function() {
                                         document.getElementById('timer1').innerHTML = count + ' Seconds Left';
                                         if (count === 0) {
-                                            document.getElementById('timer1').innerHTML = 0;
+                                            document.getElementById('timer1').innerHTML = 'Times up!';
                                             clearInterval(timer);
-                                            alert('Times up! The word was $goodWord.');
-                                            window.location.href = 'Account.php';
+                                            setTimeout(() => {
+                                                alert('Times up! The word was $goodWord.');
+                                                window.location.href = './Account.php';
+                                            }, 100);
                                         }
                                         count--;
                                     }, 1000);
@@ -202,10 +213,12 @@
                                     const timer = setInterval(function() {
                                         document.getElementById('timer1').innerHTML = count + ' Seconds Left';
                                         if (count === 0) {
-                                            document.getElementById('timer1').innerHTML = 0;
+                                            document.getElementById('timer1').innerHTML = 'Times up!';
                                             clearInterval(timer);
-                                            alert('Times up! The word was $goodWord.');
-                                            window.location.href = 'Account.php';
+                                            setTimeout(() => {
+                                                alert('Times up! The word was $goodWord.');
+                                                window.location.href = './Account.php';
+                                            }, 100);
                                         }
                                         count--;
                                     }, 1000);
@@ -219,43 +232,43 @@
             
             <div id="guesses">
                 <div id="row0" class="inputs">
-                    <input id="first" type="text" maxlength="1" minlength="1" class="input">
-                    <input type="text" maxlength="1" minlength="1" class="input">
-                    <input type="text" maxlength="1" minlength="1" class="input">
-                    <input type="text" maxlength="1" minlength="1" class="input">
-                    <input type="text" maxlength="1" minlength="1" class="input">
+                    <input id="first" type="text" maxlength="1" minlength="1" class="input" oninput="this.value = this.value.toUpperCase()">
+                    <input type="text" maxlength="1" minlength="1" class="input" oninput="this.value = this.value.toUpperCase()">
+                    <input type="text" maxlength="1" minlength="1" class="input" oninput="this.value = this.value.toUpperCase()">
+                    <input type="text" maxlength="1" minlength="1" class="input" oninput="this.value = this.value.toUpperCase()">
+                    <input type="text" maxlength="1" minlength="1" class="input" oninput="this.value = this.value.toUpperCase()">
                 </div>
 
                 <div id="row1" class="inputs">
-                    <input type="text" maxlength="1" minlength="1" class="input">
-                    <input type="text" maxlength="1" minlength="1" class="input">
-                    <input type="text" maxlength="1" minlength="1" class="input">
-                    <input type="text" maxlength="1" minlength="1" class="input">
-                    <input type="text" maxlength="1" minlength="1" class="input">
+                    <input type="text" maxlength="1" minlength="1" class="input" oninput="this.value = this.value.toUpperCase()">
+                    <input type="text" maxlength="1" minlength="1" class="input" oninput="this.value = this.value.toUpperCase()">
+                    <input type="text" maxlength="1" minlength="1" class="input" oninput="this.value = this.value.toUpperCase()">
+                    <input type="text" maxlength="1" minlength="1" class="input" oninput="this.value = this.value.toUpperCase()">
+                    <input type="text" maxlength="1" minlength="1" class="input" oninput="this.value = this.value.toUpperCase()">
                 </div>
 
                 <div id="row2" class="inputs">
-                    <input type="text" maxlength="1" minlength="1" class="input">
-                    <input type="text" maxlength="1" minlength="1" class="input">
-                    <input type="text" maxlength="1" minlength="1" class="input">
-                    <input type="text" maxlength="1" minlength="1" class="input">
-                    <input type="text" maxlength="1" minlength="1" class="input">
+                    <input type="text" maxlength="1" minlength="1" class="input" oninput="this.value = this.value.toUpperCase()">
+                    <input type="text" maxlength="1" minlength="1" class="input" oninput="this.value = this.value.toUpperCase()">
+                    <input type="text" maxlength="1" minlength="1" class="input" oninput="this.value = this.value.toUpperCase()">
+                    <input type="text" maxlength="1" minlength="1" class="input" oninput="this.value = this.value.toUpperCase()">
+                    <input type="text" maxlength="1" minlength="1" class="input" oninput="this.value = this.value.toUpperCase()">
                 </div>
 
                 <div id="row3" class="inputs">
-                    <input type="text" maxlength="1" minlength="1" class="input">
-                    <input type="text" maxlength="1" minlength="1" class="input">
-                    <input type="text" maxlength="1" minlength="1" class="input">
-                    <input type="text" maxlength="1" minlength="1" class="input">
-                    <input type="text" maxlength="1" minlength="1" class="input">
+                    <input type="text" maxlength="1" minlength="1" class="input" oninput="this.value = this.value.toUpperCase()">
+                    <input type="text" maxlength="1" minlength="1" class="input" oninput="this.value = this.value.toUpperCase()">
+                    <input type="text" maxlength="1" minlength="1" class="input" oninput="this.value = this.value.toUpperCase()">
+                    <input type="text" maxlength="1" minlength="1" class="input" oninput="this.value = this.value.toUpperCase()">
+                    <input type="text" maxlength="1" minlength="1" class="input" oninput="this.value = this.value.toUpperCase()">
                 </div>
 
                 <div id="row4" class="inputs">
-                    <input type="text" maxlength="1" minlength="1" class="input">
-                    <input type="text" maxlength="1" minlength="1" class="input">
-                    <input type="text" maxlength="1" minlength="1" class="input">
-                    <input type="text" maxlength="1" minlength="1" class="input">
-                    <input type="text" maxlength="1" minlength="1" class="input">
+                    <input type="text" maxlength="1" minlength="1" class="input" oninput="this.value = this.value.toUpperCase()">
+                    <input type="text" maxlength="1" minlength="1" class="input" oninput="this.value = this.value.toUpperCase()">
+                    <input type="text" maxlength="1" minlength="1" class="input" oninput="this.value = this.value.toUpperCase()">
+                    <input type="text" maxlength="1" minlength="1" class="input" oninput="this.value = this.value.toUpperCase()">
+                    <input type="text" maxlength="1" minlength="1" class="input" oninput="this.value = this.value.toUpperCase()">
                 </div>
 
             </div>

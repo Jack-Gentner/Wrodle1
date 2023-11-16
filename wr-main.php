@@ -11,7 +11,7 @@
 
         <script>
             function gameSetup(){
-                window.location.href ="wr-setup.php";
+                window.location.href ="./wr-setup.php";
             }
         </script>
 
@@ -21,10 +21,10 @@
             <?php include "Design.css" ?>
         </style>
         <div class="navbar">
-            <a href="wr-main.php"><i class="fas fa-home"></i></a>
+            <a href="./wr-main.php"><i class="fas fa-home"></i></a>
             <a href="#"><i class="fas fa-envelope"></i></a>
             <a href="#"><i class="fas fa-globe"></i></a>
-            <a href="Account.php"><i class="fas fa-cog"></i></a>
+            <a href="./Account.php"><i class="fas fa-cog"></i></a>
             <!-- Welcome Header -->
             <h1 class="header">Welcome!</h1>
         </div>
