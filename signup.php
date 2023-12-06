@@ -65,7 +65,7 @@
                 return true;
             }
 
-            $conn = new mysqli("localhost", "wrodleAdmin", "ZipBombLover696969", "wrodle");
+            $conn = new mysqli("localhost", "root", "", "wrodle");
 
         if ($conn->connect_error) {
             echo "Connection error";
