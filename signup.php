@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+ob_start();
+?>
 <html> 
     <head>
         <title> Sign up </title>
