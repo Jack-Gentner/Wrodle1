@@ -130,14 +130,14 @@
                 && guessArray[4] == wordArray[4]){
                     setTimeout(() => {
                         alert("Congrats, you won!");
-                        window.location.href = './Account.php';
+                        window.location.href = './won.php';
                     }, 50);
                 }
                 //loss condition 
                 else if(guessCount == 5){        
                     setTimeout(() => {
                         alert('You ran out of guesses. The word was <?php echo $word ?>');
-                        window.location.href = './Account.php';
+                        window.location.href = './lost.php';
                     }, 100);
                 }
 
@@ -179,7 +179,7 @@
                                             clearInterval(timer);
                                             setTimeout(() => {
                                                 alert('Times up! The word was $goodWord.');
-                                                window.location.href = './Account.php';
+                                                window.location.href = './lost.php';
                                             }, 100);
                                         }
                                         count--;
@@ -198,7 +198,7 @@
                                             clearInterval(timer);
                                             setTimeout(() => {
                                                 alert('Times up! The word was $goodWord.');
-                                                window.location.href = './Account.php';
+                                                window.location.href = './lost.php';
                                             }, 100);
                                         }
                                         count--;
@@ -217,7 +217,7 @@
                                             clearInterval(timer);
                                             setTimeout(() => {
                                                 alert('Times up! The word was $goodWord.');
-                                                window.location.href = './Account.php';
+                                                window.location.href = './lost.php';
                                             }, 100);
                                         }
                                         count--;

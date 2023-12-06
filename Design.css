@@ -99,6 +99,7 @@ body {
 
 #how {
     text-align: center;
+    color: black;
 }
 
 #cont {
@@ -190,6 +191,35 @@ body {
     right: 50%;
     transform: translate(50%, 0);
 }
-#logoutB {
-    float: right;
+.radio{
+    height: 20px;
+    width: 20px;
 }
+label{
+    font-size: x-large;
+    color: black;
+}
+#logoutB {
+    --color: #FE7F01;
+    font-family: inherit;
+    font-weight: bold;
+    width: 6em;
+    height: 2.6em;
+    display: inline-block;
+    line-height: 2.5em;
+    overflow: hidden;
+    margin: 20px;
+    font-size: 17px;
+    z-index: 1;
+    color: var(--color);
+    border: 2px solid var(--color);
+    border-radius: 6px;
+    position: relative;
+  }
+  
+  
+#logoutB:hover {
+    color: black;
+    background-color: var(--color);
+  }
+  

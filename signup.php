@@ -90,7 +90,14 @@ ob_start();
             $result2 = $stmt2->get_result();
             $row2 = $result2->fetch_assoc();
             $uid = $row2['uid']; 
-            $stmt2->close();           
+            $stmt2->close();     
+
+            $zero = 0;
+            
+            $stmt3 = $conn->prepare("INSERT INTO stats (uid, gamesPlayed, gamesWon, WinStreak) VALUES (?, ?, ?, ?)");
+            $stmt3->bind_param("ssss", $uid, $zero, $zero, $zero);
+            $stmt3->execute();
+            $stmt3->close();
 
             session_start();
             $_SESSION["uid"] = $uid;

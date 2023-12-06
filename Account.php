@@ -17,10 +17,9 @@
 
         $gamesPlayed = $row["gamesPlayed"];
         $gamesWon = $row["gamesWon"];
-        $fewestGuesses = $row["fewestGuesses"];
         $winStreak = $row["winStreak"];
-        $quickestTime = $row["quickestTime"];
         $hardestDifficulty = $row["hardestDifficulty"];
+        $gamesLost = ((int)$gamesPlayed - (int)$gamesWon);
     }
 
     if(array_key_exists('logout', $_POST)){
@@ -60,7 +59,7 @@
         </div>
 
         <form method="post">
-            <input id="logoutB" type="submit" name="logout" value="logout">
+            <input id="logoutB" type="submit" name="logout" value="Logout">
         </form>
 
         <div id="screen">
@@ -85,8 +84,8 @@
                 <br>
                 <br>
 
-                <h3> Shortest Guess:</h3>
-                <p id="shortestGuess"> <?php echo $fewestGuesses ?> </p>
+                <h3> Games Lost:</h3>
+                <p id="gamesWon"> <?php echo $gamesLost ?> </p>
                 <br>
                 <br>
 

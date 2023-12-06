@@ -57,14 +57,14 @@
 
 
         <div id="setupContainer">
-            <h3 id="how">Setup</h3>
+            <h1 id="how">Setup</h3>
                 <form method="post">
 
                     <label for="timer">Timed</label>
-                    <input id="timed" type="radio" name="timer">
+                    <input class="radio" id="timed" type="radio" name="timer">
 
                     <label for="notTimed">Not Timed</label>
-                    <input id="notTimed" type="radio" name="timer">
+                    <input class="radio" id="notTimed" type="radio" name="timer">
 
                     <br>
 
@@ -73,18 +73,25 @@
                 </form>
 
                 <br>
+                <br>
+                <br>
 
                 <form method="post" style="display: none;" id="timerForm">
 
-                    <label for="option3">3 Minutes</label>
-                    <input id="option3" type="radio" name="difficulty" value="easy">
+                    <label for="option3">Easy - 3 Minutes</label>
+                    <input class="radio" id="option3" type="radio" name="difficulty" value="easy">
 
-                    <label for="option2">1.5 Minutes</label>
-                    <input id="option2" type="radio" name="difficulty" value="medium">
+                    <br>
 
-                    <label for="option1">45 Seconds</label>
-                    <input id="option1" type="radio" name="difficulty" value="hard">
+                    <label for="option2">Medium - 1.5 Minutes</label>
+                    <input class="radio" id="option2" type="radio" name="difficulty" value="medium">
 
+                    <br>
+
+                    <label for="option1">Hard - 45 Seconds</label>
+                    <input class="radio" id="option1" type="radio" name="difficulty" value="hard">
+
+                    <br>
                     <br>
 
                     <input name="play" type="submit" value="Start" />
