@@ -32,11 +32,13 @@
 
         <div id="mainDiv">
             <h3 id="how">How to play</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras accumsan elit ac vehicula porttitor. Fusce id tempus justo. Vestibulum ligula turpis, fermentum in volutpat eget, rutrum vel nunc. Aenean pretium sit amet nunc facilisis molestie. In fermentum diam quis velit pretium vehicula. Duis maximus malesuada ligula, ut lobortis odio. Pellentesque sit amet condimentum orci. Nullam maximus ac dui elementum facilisis. Curabitur vel hendrerit justo, nec dignissim arcu. Duis gravida nibh ante, et auctor neque auctor non. Suspendisse vitae risus velit. Duis volutpat libero eu risus dignissim, porttitor placerat urna tincidunt. Curabitur nec imperdiet urna. Aliquam massa augue, semper quis rhoncus nec, fringilla at nibh. Sed a iaculis metus, vitae commodo ex. Vivamus ac dolor non ante pulvinar tincidunt et ac ante.
-
-                Sed et lorem ullamcorper, lacinia velit sed, aliquet lacus. Phasellus volutpat fringilla tortor, quis elementum urna aliquet mollis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse ligula nulla, sodales vehicula augue at, tempus luctus felis. Duis ullamcorper enim tellus, et mattis diam venenatis id. Duis ac nisi laoreet, sollicitudin sem vel, cursus ante. Integer id vehicula tortor. Morbi vestibulum interdum eros, eget lacinia nulla congue auctor. Duis eu suscipit massa. Vivamus ullamcorper iaculis lobortis. Nulla non tempor nulla. Mauris ornare nisl in purus dictum, sit amet commodo mi bibendum.
-                
-                Vestibulum venenatis mollis lorem at maximus. Praesent ante mi, ornare quis finibus viverra, consequat quis tortor. Etiam ut libero lectus. Fusce ultricies, lorem eget luctus pharetra, magna lectus sodales arcu, vitae rutrum massa enim et ex. In non pulvinar ante. Proin nulla odio, elementum in facilisis sit amet, facilisis id mi. Mauris ac mollis est. Suspendisse potenti. Phasellus eget sem erat. Sed porta, arcu in fringilla tempor, nisl erat efficitur nunc, vel dignissim odio risus et nisl.</p>
+            <p style="text-align: center;"> Here are the rules for our game </p>
+            <p style="text-align: center;"> You get five attempts to guess the five letter word </p>
+            <p style="text-align: center;"> If you guess the word within the five attempts, you win </p>
+            <p style="text-align: center;"> If not, you lose</p>
+            <p style="text-align: center;"> The game can be made harder by adding a timer</p>
+            <p style="text-align: center;"> If you do not select a timer, you have unlimited time</p>
+            <p style="text-align: center;"> Happy guessing!</p>
         </div>
         <div id="cont">
         <button id="play" onclick="gameSetup()"> Play </button>
